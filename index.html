@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Murone Neighborhood Map</title>
+
+	<link href="bower_components/mui/packages/cdn/css/mui.min.css" rel="stylesheet" type="text/css" />
+	<script src="bower_components/mui/packages/cdn/js/mui.min.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="css/styles.css" />
+
+	<script type="text/javascript" src="bower_components/knockout/dist/knockout.js"></script>
+</head>
+<body>
+	<div class="left-side">
+		<div class="title mui--appbar-height mui--text-title">Lincoln Park Map</div>
+		<ul class="loc-list mui-list--unstyled" data-bind="foreach: pois">
+			<li class="mui-btn mui-btn--flat loc-item" data-bind="attr: { id: $index }, click: vm.showWindow"><span data-bind="text: title"></span></li>
+		</ul>
+	</div>
+	<div class="right-side">
+		<div class="mui-appbar right-bar mui--text-title">
+	      	<span>☰</span><span>Lincoln Park Map</span>
+	    </div>
+		<div id="map"></div>
+	</div>
+</body>
+<script type="text/javascript" src="js/app.js"></script>
+<!-- <script type="text/javascript" src="js/markers.js"></script> -->
+<script async defer
+	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCqTEL3RHAlwXcSArT0GFwabPVkZy5fBnQ&callback=initMap">
+</script>
+</html>

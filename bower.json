@@ -1,0 +1,23 @@
+{
+  "name": "neighborhood-map",
+  "authors": [
+    "Chris Murone <c.murone@gmail.com>"
+  ],
+  "description": "Neighborhood Map project for FEND using Knockout and Maps API",
+  "main": "index.html",
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "knockout": "^3.4.2",
+    "map-icons": "^3.0.0",
+    "mui": "^0.9.16"
+  }
+}
