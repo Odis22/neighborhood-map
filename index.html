@@ -15,21 +15,25 @@
 </head>
 <body>
 	<div class="left-side">
-		<div class="title mui--appbar-height mui--text-title">Lincoln Park Map</div>
+		<div class="title mui--appbar-height mui--text-title">Neighborhood Map</div>
 		<ul class="loc-list mui-list--unstyled" data-bind="foreach: pois">
 			<li class="mui-btn mui-btn--flat loc-item" data-bind="attr: { id: $index }, click: vm.showWindow"><span data-bind="text: title"></span></li>
 		</ul>
 	</div>
 	<div class="right-side">
-		<div class="mui-appbar right-bar mui--text-title">
-	      	<span>☰</span><span>Lincoln Park Map</span>
+		<div class="mui-appbar right-bar mui--text-title mui--z4s">
+	      	<!-- <span>☰</span> -->
+	      	<span>Lincoln Park Favorites</span>
 	    </div>
 		<div id="map"></div>
 	</div>
 </body>
 <script type="text/javascript" src="js/app.js"></script>
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+
+
 <!-- <script type="text/javascript" src="js/markers.js"></script> -->
-<script async defer
-	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCqTEL3RHAlwXcSArT0GFwabPVkZy5fBnQ&callback=initMap">
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCqTEL3RHAlwXcSArT0GFwabPVkZy5fBnQ&callback=initMap">
 </script>
+<script src="bower_components/snazzy-info-window/dist/snazzy-info-window.min.js"></script>
 </html>
