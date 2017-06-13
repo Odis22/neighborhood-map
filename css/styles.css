@@ -45,12 +45,35 @@ body{
 .right-bar{
 	display: flex;
 	align-items: center;
+	justify-content: space-between;
 }
-.right-bar span{
+.main-title{
 	padding-left: 1em;
+}
+.title-select{
+	margin-right: 1em;
+	color: white;
+}
+.filter-wrap{
+	display: flex;
+	flex-direction: row;
+	box-sizing: border-box;
+	margin-top: 8px;
+}
+.filter-wrap input{
+	width: 88%;
+	margin: 2px;
+}
+.filter-wrap button{
+	width: 12%;
+	margin: 2px;
+	padding: 0 8px;
 }
 #map {
 	/*height: 1px;*/
 	width: 100%;
 	flex-grow: 1;
+}
+#infoContent{
+
 }
