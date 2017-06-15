@@ -1,4 +1,4 @@
-var views = ['Favorites', '"L" Stops', 'Bus Stops']
+var views = ['Favorites', '"L" Stops', 'Bus Stops'];
 var favorites = [
 		{'title': 'Toro Sushi', 'location': {'lat': 41.928962, 'lng': -87.642691}, 'fs': true, 'fsid': '4a2b0f33f964a52093961fe3', 'visible': true},
 		{'title': 'Lincoln Park Zoo', 'location': {'lat': 41.921092, 'lng':-87.633991}, 'fs': true, 'fsid': '45840a3af964a520903f1fe3', 'visible': true},
@@ -13,8 +13,8 @@ var poiResults = [];
 
 var home = {lat: 41.933021, lng:-87.640399 };
 var lp = {lat: 41.921438, lng:-87.651304};
-var fsURL = 'https://api.foursquare.com/v2/venues/'
-var fsParams = '?client_id=ZZDRRXMKOZYK3JBRIEDMYNO02M31LOHCMIQ2BMAZKRQYAAUU&client_secret=O2XLL30HW1VS4YXVAUF0Z0OJ5YZ3WTEZ3EAWBNRHTW5X2ZEL&v=20170606'
+var fsURL = 'https://api.foursquare.com/v2/venues/';
+var fsParams = '?client_id=ZZDRRXMKOZYK3JBRIEDMYNO02M31LOHCMIQ2BMAZKRQYAAUU&client_secret=O2XLL30HW1VS4YXVAUF0Z0OJ5YZ3WTEZ3EAWBNRHTW5X2ZEL&v=20170606';
 
 var Marker = function(data, model){
 	var self = this;
@@ -29,17 +29,17 @@ var Marker = function(data, model){
 
 	if (!this.fs())
 	{
-		self.googData = data.place
+		self.googData = data.place;
 		self.marker = new google.maps.Marker({
 			map: model.map,
 			position: self.position(),
 			title: self.title(),
 			icon: {
-	            url: self.googData.icon,
-	            size: new google.maps.Size(35, 35),
-	            origin: new google.maps.Point(0, 0),
-	            anchor: new google.maps.Point(15, 34),
-	            scaledSize: new google.maps.Size(25, 25)
+				url: self.googData.icon,
+				size: new google.maps.Size(35, 35),
+				origin: new google.maps.Point(0, 0),
+				anchor: new google.maps.Point(15, 34),
+				scaledSize: new google.maps.Size(25, 25)
 			},
 			animation: google.maps.Animation.DROP,
 			id: self.googData.place_id,
@@ -78,7 +78,7 @@ var Marker = function(data, model){
 				//ON API SUCCESS WRITE DATA TO AND CRATE MARKER ON DATA OBJECT
 				//THEN ADD LISTENERS TO THE MARKER FOR MAP INTERACTIVITY
 
-				self.fsData = data.response.venue
+				self.fsData = data.response.venue;
 				self.marker = new google.maps.Marker({
 					map: model.map,
 					position: self.position(),
@@ -127,8 +127,8 @@ var Marker = function(data, model){
 		
 
 	self.populateFSInfoWindow = function(){
-		var infowindow = model.largeInfowindow
-		var content = '<div id="infoContent"><h3><a href="' + self.marker.fsData.canonicalUrl + '" target="_blank" >' + self.marker.title + '</a></h3> <span>Rating: ' + self.marker.fsData.rating + '/10</span></br><img width="300" src="' + self.marker.fsData.bestPhoto.prefix + 'width300' + self.marker.fsData.bestPhoto.suffix + '" /></div><h6>Data provided by Foursquare.</h6>'
+		var infowindow = model.largeInfowindow;
+		var content = '<div id="infoContent"><h3><a href="' + self.marker.fsData.canonicalUrl + '" target="_blank" >' + self.marker.title + '</a></h3> <span>Rating: ' + self.marker.fsData.rating + '/10</span></br><img width="300" src="' + self.marker.fsData.bestPhoto.prefix + 'width300' + self.marker.fsData.bestPhoto.suffix + '" /></div><h6>Data provided by Foursquare.</h6>';
 		infowindow.setContent(content);
 		infowindow.marker = self.marker;
 		infowindow.addListener('closeclick', function() {
@@ -140,7 +140,7 @@ var Marker = function(data, model){
 	};	
 
 	self.populatePlacesInfoWindow = function(){
-		var infowindow = model.largeInfowindow
+		var infowindow = model.largeInfowindow;
 		
 		var content = '<div id="infoContent"><h3>' + self.marker.title + '</h3></div>';
 		infowindow.setContent(content);
@@ -160,14 +160,6 @@ var Marker = function(data, model){
 	this.showMe = function(){
 		self.marker.setMap(model.map);
 	};
-
-	// this.visWorker = function(){
-	// 	if(self.visible() == true){
-	// 		self.marker.setMap('map');
-	// 	}else if(self.visible() == true){
-	// 		self.marker.setMap(null);
-	// 	}
-	// }
 };
 
 function ViewModel(data) {
@@ -202,7 +194,7 @@ function ViewModel(data) {
 	});
 	this.homeMarker.addListener('click', function() {
 		var infowindow = self.largeInfowindow;
-		var content = '<div id="infoContent"><h3>Home</h3></div>'
+		var content = '<div id="infoContent"><h3>Home</h3></div>';
 		infowindow.setContent(content);
 		infowindow.marker = self.homeMarker;
 		infowindow.addListener('closeclick', function() {
@@ -242,13 +234,13 @@ function ViewModel(data) {
 				if (poi.marker.id == clicked.fsData.id){
 					poi.populateInfoWindow(poi.fs());
 				}
-			})
+			});
 		}else{
 			self.poiList().forEach(function(poi){
 				if (poi.marker.id == clicked.marker.id){
 					poi.populateInfoWindow(poi.fs());
 				}
-			})
+			});
 		}
 	};
 
@@ -259,12 +251,12 @@ function ViewModel(data) {
 	this.destroyMarkers = function(){
 		self.poiList().forEach(function(poi){
 			poi.hideMe();
-		})
+		});
 		self.poiList.removeAll();
 	};
 	this.filter = function(){
 		filter = self.filterString();
-		if (filter || filter == ''){
+		if (filter || filter === ''){
 			self.poiList().forEach(function(poi){
 				if(poi.title().toUpperCase().indexOf(filter.toUpperCase()) > -1){
 					poi.visible(true);
@@ -273,43 +265,43 @@ function ViewModel(data) {
 					poi.visible(false);
 					poi.hideMe();
 				}
-			})
+			});
 		};
 	};
 
 	this.filterWorker = ko.computed(function () {
-        var trigger = self.filterString()
-	    self.filter();
-    }, this);
+		var trigger = self.filterString();
+		self.filter();
+	}, this);
 
 	this.showPlaces = ko.computed(function () {
-        var which = self.selectedView();
-	    if (self.selectedView() == 'Bus Stops'){
-	    	var request = {
-			    bounds: self.map.getBounds(),
-			    type: ['bus_station']
+		var which = self.selectedView();
+		if (self.selectedView() == 'Bus Stops'){
+			var request = {
+				bounds: self.map.getBounds(),
+				type: ['bus_station']
 			};
-	    	var service = new google.maps.places.PlacesService(this.map);
-  			service.nearbySearch(request, self.callback);
-	    }else if(self.selectedView() == '"L" Stops'){
-    		var request = {
-			    bounds: self.map.getBounds(),
-			    type: ['subway_station']
+			var service = new google.maps.places.PlacesService(this.map);
+			service.nearbySearch(request, self.callback);
+		}else if(self.selectedView() == '"L" Stops'){
+			var request = {
+				bounds: self.map.getBounds(),
+				type: ['subway_station']
 			};
-	    	var service = new google.maps.places.PlacesService(this.map);
-  			service.nearbySearch(request, self.callback);
-	    }else if (self.selectedView() == 'Favorites'){
-	    	self.destroyMarkers();
-	    	self.setPOIs(favorites);
-	    }
-    }, this);
+			var service = new google.maps.places.PlacesService(this.map);
+			service.nearbySearch(request, self.callback);
+		}else if (self.selectedView() == 'Favorites'){
+			self.destroyMarkers();
+			self.setPOIs(favorites);
+		}
+	}, this);
 
 
-  	this.callback = function(results, status) {
+	this.callback = function(results, status) {
 		if (status == google.maps.places.PlacesServiceStatus.OK) {
 			poiResults = [];
 			results.forEach(function(poi){
-				var mk  = {'title': poi.name, 'location': poi.geometry.location, 'visible': true, place: poi}
+				var mk  = {'title': poi.name, 'location': poi.geometry.location, 'visible': true, place: poi};
 				poiResults.push(mk);
 			});
 			self.destroyMarkers();
@@ -321,7 +313,7 @@ function ViewModel(data) {
 		else{
 			window.alert("Places Service failed to respond");
 		}
-	}
+	};
 
 };
 
