@@ -266,7 +266,7 @@ function ViewModel(data) {
 					poi.hideMe();
 				}
 			});
-		};
+		}
 	};
 
 	this.filterWorker = ko.computed(function () {
@@ -276,19 +276,20 @@ function ViewModel(data) {
 
 	this.showPlaces = ko.computed(function () {
 		var which = self.selectedView();
+		var request, service;
 		if (self.selectedView() == 'Bus Stops'){
-			var request = {
+			request = {
 				bounds: self.map.getBounds(),
 				type: ['bus_station']
 			};
-			var service = new google.maps.places.PlacesService(this.map);
+			service = new google.maps.places.PlacesService(this.map);
 			service.nearbySearch(request, self.callback);
 		}else if(self.selectedView() == '"L" Stops'){
-			var request = {
+			request = {
 				bounds: self.map.getBounds(),
 				type: ['subway_station']
 			};
-			var service = new google.maps.places.PlacesService(this.map);
+			service = new google.maps.places.PlacesService(this.map);
 			service.nearbySearch(request, self.callback);
 		}else if (self.selectedView() == 'Favorites'){
 			self.destroyMarkers();
@@ -315,7 +316,7 @@ function ViewModel(data) {
 		}
 	};
 
-};
+}
 
 function initMap() {
 	vm = new ViewModel();
